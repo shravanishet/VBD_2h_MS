@@ -124,6 +124,6 @@ c = colorbar(h,'southoutside');
 caxis(h,[0,7]); 
 ylabel(c,'$R_0$','Interpreter','latex','FontSize',12,'Rotation',0)%,'Position',[0 115])
 c.TickLabelInterpreter="latex";
-AddLetters2Plots(f1, {'a', 'b', 'c', 'd', 'h', 'e', 'f', 'g'})
+AddLetters2Plots(f1, {'a', 'b', 'c', 'd', 'h', 'e', 'f', 'g','h'})
 
 
