@@ -25,7 +25,7 @@ sh=1;
 egc=5.0;
 pf=0.95;
 mu=0.5;
-sr=.95; %%%taken from ppr Menach 2007 
+sr=.95;  
 
 
  gh1=[2,  1.05, 1,    1];
