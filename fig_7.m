@@ -25,7 +25,7 @@ sh=1;
 egc=5.0;
 pf=0.95;
 mu=0.5;
-sr=.95; %%%taken from ppr Menach 2007
+sr=.95;
 K1=1;
 T=1000;
 bhv=.5;    %%beta_hv  transmission rate
@@ -60,16 +60,16 @@ cd4=0;
 [sing1,f1s,b31s,d31s]=funct2(wrr1);
 ww=cat(2,wrr,wrr1); 
 PP=cat(2, sing, sing1);
-K2=double(PP);
+ESS_val=double(PP);
 biteq=cat(2,fs,f1s);
 death=cat(2,d3s,d31s);
 birth=cat(2,b3s,b31s);
-[y11,y22,y33,a11,R0]=funct3(biteq,birth,death,K2);
+[y11,y22,y33,vpref_val,R0]=funct3(biteq,birth,death,ESS_val);
 
 
 
  axes(ha(1));
-plot(ww,K2)
+plot(ww,ESS_val)
 xlim([0 5])
  hold on
  patch_x = [cd1 cd2];
@@ -85,17 +85,14 @@ pos = get(hs, 'Position');
 pos(1) = pos(1) ;
 set(hs, 'Position', pos)
 
-
  box on
  ax=gca;
 ax.LineWidth=2;
  ax.XMinorTick="off";
  ax.TickLabelInterpreter="latex";
 
-
-
  axes(ha(2));
- plot(ww,a11)
+ plot(ww,vpref_val)
   ylim([0 7])
   xlim([0 5])
   hold on
@@ -116,8 +113,6 @@ set(hs, 'Position', pos)
 ax.LineWidth=2;
  ax.XMinorTick="off";
  ax.TickLabelInterpreter="latex";
-
-
 
  axes(ha(3));
 plot(ww,R0)
@@ -231,7 +226,6 @@ global d1_e tf t2 sh egc pf mu sr K1 T bhv bvh mu1 ...
 
 
  for i=1:length(wrr)
-     i
     w=wrr(i);
  syms scr 
 psi=1-exp(-(sh*gh+scr*gc));
@@ -318,12 +312,12 @@ singular1{j}=vpasolve(eqn1,scr1);
  end
  end
 
-function [y11,y22,y33,a11,R0]=funct3(bite,birth,death,K2)
+function [y11,y22,y33,vpref_val,R0]=funct3(bite,birth,death,ESS_val)
 global d1_e tf t2 sh egc pf mu sr K1 T bhv bvh mu1 ...
     d1 d2 del1 del2 Nh1 Nh2 gc gh Ih10 Ih20 Iv0
 
-  a11=K1.*Nh2./(K2.*Nh1);
-ro=length(a11);
+  vpref_val=K1.*Nh2./(ESS_val.*Nh1);
+ro=length(vpref_val);
  for m=1:ro
         v=double(bite(m));
         d=double(death(m));
@@ -334,7 +328,7 @@ ro=length(a11);
             M=(b-d)/d1_e;
         end
 
-    a=a11(m);
+    a=vpref_val(m);
     c1=bhv*v*M/(a*Nh1+Nh2);
     c2=bvh*v/(a*Nh1+Nh2);
  R0(m)=(c1*c2/d)*((a^(2)*Nh1/(mu1+d1))+(Nh2/(del2+d2)));
@@ -354,8 +348,4 @@ h=@(t,p)[(a*c1*p(3)*(1-p(1)-p(4)))-(mu1+d1)*p(1);        %Inf host1
  y33(m)=IV(1000);
 end
 end
-
-
-
-
 
