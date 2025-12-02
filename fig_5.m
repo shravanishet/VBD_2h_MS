@@ -2,18 +2,9 @@
 %%Plot singularity 
 %%%%%%%%%%%%%%%%%%%%%%%%%
 clc; clear all;  close all;
-% xlabelw={'','','Trade-off strength ($\chi$)','Trade-off strength ($\chi$)'};
-% ylabelw={'Evolutionary Singular strategy ($\sigma_{h2}^{*}$)','',...
-   % 'Evolutionary Singular strategy ($\sigma_{h2}^{*}$)','' };
-%  ⪅ ⪆	
- % Titlew={'Relative Encounter rate \x2272 1','Relative Encounter rate \x226A 1',...
-      % 'Relative Encounter rate \x226B 1','Relative Encounter rate \x2273 1'};
-
+Titlew={'Relative Encounter rate $\ll 1$','Relative Encounter rate $< \approx 1$',...
+  'Relative Encounter rate $\gg 1$','Relative Encounter rate  $ > \approx 1$'};
  
-   Titlew={'Relative Encounter rate $\ll 1$','Relative Encounter rate $< \approx 1$',...
-  'Relative Encounter rate $ > \approx 1$','Relative Encounter rate $\gg 1$ '};
- 
-
 fig1=figure(1)
 set(fig1,'PaperUnits','centimeters','Units','centimeters','PaperPosition', [0 0 18 32],'Position',[0 0 18 32])
  
@@ -34,13 +25,13 @@ sh=1;
 egc=5.0;
 pf=0.95;
 mu=0.5;
-sr=.95; %%%taken from ppr Menach 2007
+sr=.95; %%%taken from ppr Menach 2007 
 
 
  gh1=[2,  1.05, 1,    1];
  gc1=[1,  1,    1.5, 5];
 
- wrr=0:.01:2;  % to check initial solution value
+wrr=0:.01:2;  
 wrr1=2:.01:5;
 
 
@@ -49,7 +40,6 @@ for jn=1:length(gh1)
     gc=gc1(jn);
     axes(ha(jn)); 
     for i=1:length(wrr)
-        i
         w=wrr(i)
         syms scr 
         psi=1-exp(-(sh.*gh+scr.*gc));
@@ -76,9 +66,6 @@ for jn=1:length(gh1)
          end
     end 
  
- plot(wrr,sing,Color='#0072BD')
- hold on
-
  for j=1:length(wrr1)
      j
      w1=wrr1(j)
@@ -104,13 +91,16 @@ for jn=1:length(gh1)
     else
         sing1(j)=0;
     end
-    end
- plot(wrr1,sing1,Color='#0072BD')
+ end
+
+
+ chi_value=[wrr wrr1];
+ ESS_value=[sing sing1];
+ plot(chi_value,ESS_value,Color='#0072BD')
+  title(Titlew{jn}, 'Interpreter', 'latex', 'FontSize', 12);
  hold off
  ylim([0 1])
  xlim([-0.5 5])
-      
-
  
 hs = get(gca, 'XLabel');
 pos = get(hs, 'Position');
@@ -125,22 +115,11 @@ set(vs, 'Position', posv)
 xlabel ('Trade-off strength ($\chi$)','Interpreter','latex','FontSize',12,'FontWeight','bold','Rotation',0);
 ylabel ('Evolutionary singular strategy $(\sigma_{h2}^{*})$','Interpreter','latex','FontSize',12,'Rotation',90,'FontWeight','bold');
     
- title(sprintf(Titlew{jn}), 'Interpreter', 'latex','FontSize',12);
-
  box on
  ax=gca;
  ax.LineWidth=2;
  ax.XMinorTick="off";
  ax.TickLabelInterpreter="latex";
  ax.FontWeight="bold";
-
-
 end
   AddLetters2Plots(fig1, 'HShift', -0.08, 'VShift', -0.02)
-
-
-
-
-
-
-
