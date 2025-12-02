@@ -22,7 +22,7 @@ The codes are in the form of  `.m`  files, which can be executed in MATLAB.
 
 8. `fig_8.m`: The code in this file simulates solutions for the disease prevalence in $h1$ using `ode89`. The data for equilibrium prevalence $y_1^{\ast}$ is stored in matrix `INF1` of dimension 200 $\times$ 200, for each value of host competence $(\gamma=\frac{1}{\alpha_{vc}})$ and vector preference $(\alpha_v)$.
 
-9. `fig_9.m`: This file simulates the solution curves for the ODE system for different values of initial conditions. The value of the equilibrium point ($y_1^{*},y_3^{*},y_2^{*}$) is calculated using the expressions given in Section 3.3 of the manuscript.
+9. `fig_9.m`: This file simulates the solution curves for the ODE system for different values of initial conditions. The value of the equilibrium point ($y_1^{\ast},y_3^{\ast},y_2^{\ast}$) is calculated using the expressions given in Section 3.3 of the manuscript.
 
 10. `AddLetters2Plots`: This file is used to add letters to the subplots in Figures. This function has been taken from [Alex Ryabov (2025)](https://in.mathworks.com/matlabcentral/fileexchange/95478-addletters2plots).
 
