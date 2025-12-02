@@ -17,6 +17,7 @@ The codes are in the form of `.m` files which can be executed in MATLAB.
 9. `fig_9.m`: This file simulates the solution curves for the ODE system for different values of initial condition. The value of the equilibrium point is calculated using the expression given in Section 3.3 of the manuscript.
 10. `AddLetters2Plots`: This file is used to add letters to the subplots in Figures. This function has been taken from [Alex Ryabov (2025)](https://in.mathworks.com/matlabcentral/fileexchange/95478-addletters2plots)
 11. `slanCM`: This file is used to add colors to the Figures. This function has been taken from [Zhaoxu Liu / slandarer (2025)](https://in.mathworks.com/matlabcentral/fileexchange/120088-200-colormap).
+12. `tight_subplot`: This file is used to create subplot axes and adjust gaps and margins. This function has been taken from [Colin Rowell (2025)](https://in.mathworks.com/matlabcentral/fileexchange/168926-tightsubplot).
 
 ### The parameter values used for numerical simulation is presented in table below.
 
