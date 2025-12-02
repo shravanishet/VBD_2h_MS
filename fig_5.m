@@ -40,7 +40,7 @@ for jn=1:length(gh1)
     gc=gc1(jn);
     axes(ha(jn)); 
     for i=1:length(wrr)
-        w=wrr(i)
+        w=wrr(i);
         syms scr 
         psi=1-exp(-(sh.*gh+scr.*gc));
         phs=psi.*pf./(1-((1-psi).*pf));
@@ -67,8 +67,7 @@ for jn=1:length(gh1)
     end 
  
  for j=1:length(wrr1)
-     j
-     w1=wrr1(j)
+     w1=wrr1(j);
      syms scr1 
      psi1=1-exp(-(sh.*gh+scr1.*gc));
      phs1=psi1.*pf./(1-((1-psi1).*pf));
