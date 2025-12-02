@@ -1,31 +1,25 @@
-
 clc; clear all;  close all;
-
 f1=figure(1)
 set(f1,'PaperUnits','centimeters','Units','centimeters','PaperPosition', [0 0 18 32],'Position',[0 0 18 32])
- 
 set(0, 'defaultaxesfontsize', 12);
 set(0, 'defaulttextfontsize', 12);
 set(0, 'defaultlinelinewidth',2);
 
-
 gap = [0.06 0.09];  % Gap between plots (top/bottom, left/right)
 marg_h = [0.05 0.01]; % Margins in height (bottom/top)
 marg_w = [0.09 0.04]; % Margins in width (left/right)
-
 [ha, pos] = tight_subplot(3, 2, gap, marg_h, marg_w);
 
-
 global d1_e tf t2 sh egc pf mu sr K1 T bhv bvh mu1 ...
-    d1 d2 del1 del2 Nh1 Nh2 gc gh Ih10 Ih20 Iv0 cd1 cd2 cd3 cd4
+    d1 d2 del1 del2 Nh1 Nh2 gc gh Ih10 Ih20 Iv0 cd1 cd2 
 d1_e=0.00028;
 tf=.1;
-t2=1;    %2.5; %1
+t2=1;   
 sh=1;
 egc=5.0;
 pf=0.95;
 mu=0.5;
-sr=.95;
+sr=.95; 
 K1=1;
 T=1000;
 bhv=.5;    %%beta_hv  transmission rate
@@ -35,26 +29,17 @@ d1=.5;     %%death rate of host1 (human)
 d2=.5;   %%death rate of host2
 del1=.5;  % rate of waning immunity for h1
 del2=.5;   %% rate of waning immunity for h2
-
-
 Nh1=3000;    %Total population
 Nh2=1000;
-
 Ih10=0.001;
 Ih20=0.001;
 Iv0=0.001;
-
 gh=1.2; 
 gc=1;
-
 cd1=0.1; 
 cd2=2.01;
-
-cd3=0;
-cd4=0;
-
-    wrr=0.01:.01:2;  
-    wrr1=2:.01:5;
+wrr=0.01:.01:2;  
+wrr1=2:.01:5;
 
 [sing,fs,b3s,d3s]=funct1(wrr);
 [sing1,f1s,b31s,d31s]=funct2(wrr1);
@@ -64,20 +49,16 @@ ESS_val=double(PP);
 biteq=cat(2,fs,f1s);
 death=cat(2,d3s,d31s);
 birth=cat(2,b3s,b31s);
-[y11,y22,y33,vpref_val,R0]=funct3(biteq,birth,death,ESS_val);
+[y1_val,y2_val,y3_val,vpref_val,R0]=funct3(biteq,birth,death,ESS_val);
 
-
-
- axes(ha(1));
+axes(ha(1));
 plot(ww,ESS_val)
 xlim([0 5])
- hold on
- patch_x = [cd1 cd2];
+hold on
+patch_x = [cd1 cd2];
 fill([patch_x(1), patch_x(1), patch_x(2), patch_x(2)], [0, 1, 1, 0], 'r', 'FaceAlpha', 0.2, 'EdgeColor', 'none','FaceColor',[0.06, 1,1]);
 hold on
-patchw_x = [cd3 cd4];
-fill([patchw_x(1), patchw_x(1), patchw_x(2), patchw_x(2)], [0, 1, 1, 0], 'r', 'FaceAlpha', 0.2, 'EdgeColor', 'none','FaceColor',[0.06, 1,1]);
-   ylabel ('Evolutionary singular strategy ($\sigma_{h2}^*$)','Interpreter','latex','FontSize',12,'Rotation',90,'FontWeight','bold');
+ylabel ('Evolutionary singular strategy ($\sigma_{h2}^*$)','Interpreter','latex','FontSize',12,'Rotation',90,'FontWeight','bold');
 ylim([0 1])
 
 hs = get(gca, 'XLabel');
@@ -85,24 +66,22 @@ pos = get(hs, 'Position');
 pos(1) = pos(1) ;
 set(hs, 'Position', pos)
 
- box on
- ax=gca;
+box on
+ax=gca;
 ax.LineWidth=2;
- ax.XMinorTick="off";
- ax.TickLabelInterpreter="latex";
+ax.XMinorTick="off";
+ax.TickLabelInterpreter="latex";
 
- axes(ha(2));
- plot(ww,vpref_val)
-  ylim([0 7])
-  xlim([0 5])
-  hold on
- patch_x = [cd1 cd2];
- fill([patch_x(1), patch_x(1), patch_x(2), patch_x(2)], [0, 8, 8, 0], 'r', 'FaceAlpha', 0.2, 'EdgeColor', 'none','FaceColor',[0.06, 1,1]);
+axes(ha(2));
+plot(ww,vpref_val)
+ylim([0 7])
+xlim([0 5])
 hold on
-patchw_x = [cd3 cd4];
-fill([patchw_x(1), patchw_x(1), patchw_x(2), patchw_x(2)], [0, 5, 5, 0], 'r', 'FaceAlpha', 0.2, 'EdgeColor', 'none','FaceColor',[0.06, 1,1]);
+patch_x = [cd1 cd2];
+fill([patch_x(1), patch_x(1), patch_x(2), patch_x(2)], [0, 8, 8, 0], 'r', 'FaceAlpha', 0.2, 'EdgeColor', 'none','FaceColor',[0.06, 1,1]);
+hold on
 ylabel ('Vector preference ($\alpha_v$)','Interpreter','latex','FontSize',12,'Rotation',90,'FontWeight','bold');
- legend('$\alpha_v$','$\alpha_v<1$','FontSize',13,'Box','off','FontWeight','bold',Interpreter='latex')
+legend('$\alpha_v$','$\alpha_v<1$','FontSize',13,'Box','off','FontWeight','bold',Interpreter='latex')
 hs = get(gca, 'XLabel');
 pos = get(hs, 'Position');
 pos(1) = pos(1) ;
@@ -110,21 +89,18 @@ set(hs, 'Position', pos)
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  box on
  ax=gca;
-ax.LineWidth=2;
+ ax.LineWidth=2;
  ax.XMinorTick="off";
  ax.TickLabelInterpreter="latex";
 
- axes(ha(3));
+axes(ha(3));
 plot(ww,R0)
  ylim([0 8])
  xlim([0 5])
  hold on
  patch_x = [cd1 cd2];
-% Create a vertical patch of transparent color
 fill([patch_x(1), patch_x(1), patch_x(2), patch_x(2)], [0, 15, 15, 0], 'r', 'FaceAlpha', 0.2, 'EdgeColor', 'none','FaceColor',[0.06, 1,1]);
 hold on
-patchw_x = [cd3 cd4];
-fill([patchw_x(1), patchw_x(1), patchw_x(2), patchw_x(2)], [0, 15, 15, 0], 'r', 'FaceAlpha', 0.2, 'EdgeColor', 'none','FaceColor',[0.06, 1,1]);
 
 ylabel ('Basic reproduction number ($R_0$)','Interpreter','latex','FontSize',12,'Rotation',90,'FontWeight','bold');
 hs = get(gca, 'XLabel');
@@ -138,15 +114,12 @@ set(hs, 'Position', pos)
  ax.XMinorTick="off";
  ax.TickLabelInterpreter="latex";
 
-
- axes(ha(4)); 
-plot(ww,y11)
+axes(ha(4)); 
+plot(ww,y1_val)
 hold on
 patch_x = [cd1 cd2];
 fill([patch_x(1), patch_x(1), patch_x(2), patch_x(2)], [0, 1, 1, 0], 'r', 'FaceAlpha', 0.2, 'EdgeColor', 'none','FaceColor',[0.06, 1,1]);
 hold on
-patchw_x = [cd3 cd4];
-fill([patchw_x(1), patchw_x(1), patchw_x(2), patchw_x(2)], [0, 1, 1, 0], 'r', 'FaceAlpha', 0.2, 'EdgeColor', 'none','FaceColor',[0.06, 1,1]);
 
  ylim([0 1])
  xlim([0 5])
@@ -163,15 +136,13 @@ ax.LineWidth=2;
 
 
 axes(ha(5));
-plot(ww,y22)
+plot(ww,y2_val)
 xlim([0 5])
 hold on 
  patch_x = [cd1 cd2];
-% Create a vertical patch of transparent color
+
 fill([patch_x(1), patch_x(1), patch_x(2), patch_x(2)], [0, 1, 1, 0], 'r', 'FaceAlpha', 0.2, 'EdgeColor', 'none','FaceColor',[0.06, 1,1]);
 hold on
-patchw_x = [cd3 cd4];
-fill([patchw_x(1), patchw_x(1), patchw_x(2), patchw_x(2)], [0, 1, 1, 0], 'r', 'FaceAlpha', 0.2, 'EdgeColor', 'none','FaceColor',[0.06, 1,1]);
 
  ylim([0 1])
  xlabel ('Inverse trade-off strength $(\chi)$','Interpreter','latex','FontSize',12,'FontWeight','bold');
@@ -189,28 +160,24 @@ ax.LineWidth=2;
 
 
 axes(ha(6));
-plot(ww,y33)
+plot(ww,y3_val)
 ylim([0 1])
 xlim([0 5])
 hold on
- patch_x = [cd1 cd2];
-% Create a vertical patch of transparent color
+patch_x = [cd1 cd2];
 fill([patch_x(1), patch_x(1), patch_x(2), patch_x(2)], [0, 1,1, 0], 'r', 'FaceAlpha', 0.2, 'EdgeColor', 'none','FaceColor',[0.06, 1,1]);
 hold on
-patchw_x = [cd3 cd4];
-fill([patchw_x(1), patchw_x(1), patchw_x(2), patchw_x(2)], [0, 1, 1, 0], 'r', 'FaceAlpha', 0.2, 'EdgeColor', 'none','FaceColor',[0.06, 1,1]);
 
 xlabel ('Inverse trade-off strength $(\chi)$','Interpreter','latex','FontSize',12,'FontWeight','bold');
 ylabel ('Vector prevalence ($y_3^*$)','Interpreter','latex','FontSize',12,'Rotation',90,'FontWeight','bold');
  
-
-  hs = get(gca, 'XLabel');
+hs = get(gca, 'XLabel');
 pos = get(hs, 'Position');
 pos(1) = pos(1) ;
 set(hs, 'Position', pos)
-  box on
+ box on
  ax=gca;
-ax.LineWidth=2;
+ ax.LineWidth=2;
  ax.XMinorTick="off";
  ax.TickLabelInterpreter="latex";
 
@@ -226,8 +193,8 @@ global d1_e tf t2 sh egc pf mu sr K1 T bhv bvh mu1 ...
 
 
  for i=1:length(wrr)
-    w=wrr(i);
- syms scr 
+     w=wrr(i);
+     syms scr 
 psi=1-exp(-(sh*gh+scr*gc));
 phs=psi*pf/(1-((1-psi)*pf));
 Q=scr*gc/(sh*gh+scr*gc);
@@ -271,9 +238,7 @@ function [sing1,f1s,b31s,d31s]=funct2(wrr1)
 global d1_e tf t2 sh egc pf mu sr K1 T bhv bvh mu1 ...
     d1 d2 del1 del2 Nh1 Nh2 gc gh Ih10 Ih20 Iv0
 for j=1:length(wrr1)
-     j
     w1=wrr1(j);
-
 syms scr1 
 psi1=1-exp(-(sh.*gh+scr1.*gc));
 phs1=psi1.*pf./(1-((1-psi1).*pf));
@@ -312,7 +277,7 @@ singular1{j}=vpasolve(eqn1,scr1);
  end
  end
 
-function [y11,y22,y33,vpref_val,R0]=funct3(bite,birth,death,ESS_val)
+function [y1_val,y2_val,y3_val,vpref_val,R0]=funct3(bite,birth,death,ESS_val)
 global d1_e tf t2 sh egc pf mu sr K1 T bhv bvh mu1 ...
     d1 d2 del1 del2 Nh1 Nh2 gc gh Ih10 Ih20 Iv0
 
@@ -343,9 +308,8 @@ h=@(t,p)[(a*c1*p(3)*(1-p(1)-p(4)))-(mu1+d1)*p(1);        %Inf host1
  IH1=W(:,1); 
  IH2=W(:,2); 
  IV=W(:,3); 
- y11(m)=IH1(1000);
- y22(m)=IH2(1000);
- y33(m)=IV(1000);
+ y1_val(m)=IH1(1000);
+ y2_val(m)=IH2(1000);
+ y3_val(m)=IV(1000);
 end
 end
-
