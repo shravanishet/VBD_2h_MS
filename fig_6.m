@@ -1,5 +1,4 @@
 clc; clear all;  close all;
-
 fig1=figure(1)
 set(fig1,'PaperUnits','centimeters','Units','centimeters','PaperPosition', [0 0 18 32],'Position',[0 0 18 32]) 
 set(0, 'defaultaxesfontsize', 12);
@@ -13,12 +12,15 @@ sh=1;
 egc=4.0;
 pf=0.95;
 mu=0.5;
-sr=.1; 
+sr=.1; %%%taken from ppr Menach 2007
 gh=[1];
 gc=[1];
+
     wrr=0:.01:2; 
     wrr1=2:.01:5;
+
     for i=1:length(wrr)
+        w=wrr(i);
         syms scr 
         psi=1-exp(-(sh.*gh+scr.*gc));
         phs=psi.*pf./(1-((1-psi).*pf));
@@ -43,7 +45,10 @@ gc=[1];
              sing(i)=0;
          end
     end
+ 
+
  for j=1:length(wrr1)
+     w1=wrr1(j);
      syms scr1 
      psi1=1-exp(-(sh.*gh+scr1.*gc));
      phs1=psi1.*pf./(1-((1-psi1).*pf));
@@ -60,25 +65,33 @@ gc=[1];
      deri1=diff_pd1+diff_ep1;
      eqn1=deri1==0;
      singular1{j}=vpasolve(eqn1,scr1);
+
     if singular1{1,j}>0
         sing1(j)=singular1{1,j};
     else
         sing1(j)=0;
     end
- end
- chi_value=[wrr wrr1];
+    end
+
+
+chi_value=[wrr wrr1];
  ESS_value=[sing sing1];
  plot(chi_value,ESS_value,Color='#0072BD')
+
+
  hold off
  ylim([0 1])
  xlim([-0.5 5])
 xlabel ('Inverse trade-off strength ($\chi$)','Interpreter','latex','FontSize',15,'FontWeight','bold','Rotation',0);
-ylabel ('Evolutionary singular strategy $(\sigma_{h2}^{*})$','Interpreter','latex','FontSize',15,'Rotation',90,'FontWeight','bold');    
+ylabel ('Evolutionary singular strategy $(\sigma_{h2}^{*})$','Interpreter','latex','FontSize',15,'Rotation',90,'FontWeight','bold');
+    
  box on
  ax=gca;
  ax.LineWidth=2;
  ax.XMinorTick="off";
  ax.TickLabelInterpreter="latex";
  ax.FontWeight="bold";
+
 hold on
 xline(2,LineStyle="--",LineWidth=2)
+
