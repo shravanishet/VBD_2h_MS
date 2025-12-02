@@ -22,7 +22,7 @@ The data is in the form of `.m` files (which can be opened in MATLAB).
 | ------------ | -------------------------------------------- | ------- |
 | $\beta_{hv}$ | transmission probability from vector to host | 0.5     |
 | $\beta_{vh}$ | transmission probability from host to vector | 0.5     |
-| $ c$         | biting rate                                  | 1       |
+| $c$          | biting rate                                  | 1       |
 | $\alpha_v$   | feeding preference                           | varied  |
 | $\mu_1$      | recovery rate of $h1$                        | 0.5     |
 | $\delta_2$   | recovery rate of $h2$                        | 0.5     |
