@@ -86,7 +86,7 @@ text(0.5, 1.1, 'competent $h2$', 'HorizontalAlignment','center','Interpreter','l
 text(0.96,1.5, ' prefer $h1$', 'HorizontalAlignment','center','Interpreter','latex',Rotation=90);
 text( 0.96,0.5, ' prefer $h2$', 'HorizontalAlignment','center','Interpreter','latex',Rotation=90);
 
-function [IN1,IN2,IN3,R0] = computeZ(del2,av)
+function [IN1] = computeZ(del2,av)
 global  T bhv bvh v d3 M del1 d1 d2 mu1 Nh1 Nh2
       c1=bhv.*v.*M./(av.*Nh1+Nh2);
       c2=bvh.*v./(av.*Nh1+Nh2);
