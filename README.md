@@ -16,7 +16,7 @@ The codes are in the form of  `.m`  files, which can be executed in MATLAB.
 
 5. `fig_5.m`: This file simulates the value of Evolutionary singular strategies (ESS) $\sigma_{h2}^{*}$, for different values of inverse trade-off strength ($\chi$). The value of $\chi$ is varied from 0 to 5, and matrix `ESS_value` of dimensions 1 $\times$ 502  stores the data for Evolutionary singular strategies. The subfigures are made by considering the 4 combinations of encounter rates similar to Figure(4).
 
-6. `fig_6.m`: This file computes ESS for each $\chi$ value ranging from 0 to 5, and stores the data in the matrix `ESS_value` of dimensions 1$\times$ 502.  The parameters used are $\mathcal{E}_{h1}=\mathcal{E}_{h2}$=1, $q_2=$ 0.1, $\tau_2$=1 day, $\tau_f$=0.2 day, $f_{rc}=4$. 
+6. `fig_6.m`: This file computes ESS for each $\chi$ value ranging from 0 to 5, and stores the data in the matrix `ESS_value` of dimensions 1 $\times$ 502.  The parameters used are $\mathcal{E}_{h1}=\mathcal{E}_{h2}$=1, $q_2=$ 0.1, $\tau_2$=1 day, $\tau_f$=0.2 day, $f_{rc}=4$. 
 
 7. `fig_7.m`: This file contains simulations for the evolutionary singular point, basic reproduction number, equilibrium prevalence in $h1$ ($y_1^*$), equilibrium prevalence in $h2$ ($y_2^*$), and equilibrium prevalence in vector population ($y_3^*$), obtained for different $\mathbf{\chi}$ values.  The value of $\chi$ is varied from 0 to 5. Matrices `ESS_val`, `R0`, `y1_val`, `y2_val`, `y3_val`, each of dimensions 1$\times$ 501 store the values of  ESS, $R_0$, $y_1^*$, $y_2^*$, $y_3^*$, respectively for each simulation. Parameter values used are $\mathcal{E}_{h1}$=1.2, $\mathcal{E}_{h2}$=1, $\tau_2$=1 day and rest as in Figure(4). 
 
