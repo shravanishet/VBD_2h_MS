@@ -12,7 +12,7 @@ marg_h = [0.09 0.04]; % Margins in height (bottom/top)
 marg_w = [0.09 0.07]; % Margins in width (left/right)
 [ha, pos] = tight_subplot(2, 1, gap, marg_h, marg_w);
 
-cmap = sky(4);
+cmap = sky(3);
 
 bhv=.5;    %%beta_hv  transmission rate
 bvh=.5;    %%beta_vh
@@ -36,8 +36,8 @@ axes(ha(1));
   for i=1:length(deltatwo)
       mu1=deltatwo(i);
       delta2{i}=strcat(' $\mu_{1}$=', num2str(mu1));
-      pp=(c1.*c2./d).*((a.^(2).* Nh1./(mu1+d1))+(Nh2./(del2+d2)));
-      semilogx(a,pp,'LineWidth',4, 'Color', cmap(i,:),MarkerFaceColor='k',MarkerSize=3.5);
+      R0_val=(c1.*c2./d).*((a.^(2).* Nh1./(mu1+d1))+(Nh2./(del2+d2)));
+      semilogx(a,R0_val,'LineWidth',4, 'Color', cmap(i,:),MarkerFaceColor='k',MarkerSize=3.5);
       hold on
   end
 
@@ -82,8 +82,8 @@ mu1=0.5;
   for i=1:length(deltatwo)
       del2=deltatwo(i);
       delta2{i}=strcat(' $\delta_{2}$=', num2str(del2));
-      pp=(c1.*c2./d).*((a.^(2).* Nh1./(mu1+d1))+(Nh2./(del2+d2)));
-      semilogx(a,pp,'LineWidth',4, 'Color', cmap(i,:));
+      R0_val=(c1.*c2./d).*((a.^(2).* Nh1./(mu1+d1))+(Nh2./(del2+d2)));
+      semilogx(a,R0_val,'LineWidth',4, 'Color', cmap(i,:));
       hold on
   end
 
