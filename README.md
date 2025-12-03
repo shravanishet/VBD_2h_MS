@@ -20,7 +20,7 @@ The codes are in the form of  `.m`  files, which can be executed in MATLAB.
 
 7. `fig_7.m`: This file contains simulations for the evolutionary singular point, basic reproduction number, equilibrium prevalence in $h1$ ($y_1^{\ast}$), equilibrium prevalence in $h2$ ($y_2^{\ast}$), and equilibrium prevalence in vector population ($y_3^{\ast}$), obtained for different $\chi$ values.  The value of $\chi$ is varied from 0 to 5. Matrices `ESS_val`, `R0`, `y1_val`, `y2_val`, `y3_val`, each of dimensions 1 $\times$ 501 store the values of  ESS, $R_0$, $y_1^{\ast}$, $y_2^{\ast}$, $y_3^{\ast}$, respectively for each simulation. Parameter values used are $\mathcal{E}_{h1}$=1.2, $\mathcal{E}_{h2}$=1, $\tau_2$=1 day and rest as in Figure(4). 
 
-8. `fig_8.m`: The code in this file simulates solutions for the disease prevalence in $h1$ using `ode89`. The data for equilibrium prevalence $y_1^{\ast}$ is stored in matrix `INF1` of dimension 200 $\times$ 200, for each value of host competence $(\gamma=\frac{1}{\alpha_{vc}})$ and vector preference $(\alpha_v)$. Here $\gamma$ is varied by varying $\delta_2$ and $d_2=0.01$.
+8. `fig_8.m`: The code in this file simulates solutions for the disease prevalence in $h1$ using `ode89`. The data for equilibrium prevalence $y_1^{\ast}$ is stored in matrix `INF1` of dimension 200 $\times$ 200, for each value of host competence $(\gamma=\frac{1}{\alpha_{vc}})$ and vector preference $(\alpha_v)$. Here $d_2=0.01$ and $\gamma$ is varied by varying $\delta_2$.
 
 9. `fig_9.m`: This file simulates the solution curves for the ODE system for different values of initial conditions. The value of the equilibrium point ($y_1^{\ast},y_3^{\ast},y_2^{\ast}$) is calculated using the expressions given in Section 3.3 of the manuscript.
 
